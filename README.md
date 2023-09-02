@@ -16,3 +16,6 @@
 15. ```cat``` -> cmd used to print the content of any file eg a js file's code
 16. ```cat > hello``` then in next line "my name is Priyansh" -> no such file as hello exists so it gets created with the text contained in it.
 17. merging contents of two files one.txt and two.txt -> ```cat one.txt two.txt > new.txt```
+18. ```cd .``` will stay in that dir
+19. ```cd ..``` will go to previous directory
+20. ```man``` command is used to get the deails of a particular command for eg. ```man echo```, this givrs the details of all the information of the ```echo```command
