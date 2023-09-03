@@ -31,44 +31,78 @@
  
 # Docker Concepts
 
-1. **Docker**: It is a platform that is used to build, run and ship applications.
-2. Eg. 2 completely different apps with completely different dependencies can run on same system using it. Eg. App 1 (uses Node 14 and Mongo 4) and App 2 (uses Node 9 and Mongo 3)
-3. If the use of an app (built using docker) is done, it can be compeletely removed from the system without affecting other apps and their dependencies.
-4. Container - An isolated env for running an application.
-5. Virtual Machine - An abstraction of a machine (physical hardware). Eg On a Mac - 2 virtual machine can be present -> a. Windows b. Linux
-6. VMs can be created using a HyperVisor software like VirtualBox or VMware or Hyper-v(windows only)
-7. Disadvantages with Virtual Machines are:
-    <ul>
-      <li>Each Virtual Machine needs a fully installed OS</li>
-      <li>Slow to start</li>
-      <li>resource intensive</li>
-     </ul>
-8. Advantages with Containers are:
-    <ul>
-      <li>Allow running multiple apps in isolation</li>
-      <li>Are lightweight</li>
-      <li>Use OS of the Host</li>
-      <li>Start Quicklyt</li>
-      <li>Needs less hardware resources</li>
-     </ul>
-9. Docker Architecture:
-- On a windows pc -> Windows + Linux containers can run (windows 10 contain linux kernel)
-- On a Linux system -> Linux containers can run
-- On a Mac system -> Linux container can run using Linux VM
-10. Docker Workflow
-- An application is dockerized using the **Dockerfile**. The dockerfile is a plain text file that contains the instructions that docker uses to package this application into an **Image**.
-- This **Image** contains all the information that is needed by our application to run properly.
-- Typically the **Image** contains the following things: 1. A cut down OS 2. A runtime environment 3. Application Files 4. Third-party libraries 5. Environment Variables
-- This **Image** is then used to start a **Container** by docker.
-- A **Container** is a special type of process because it has its own type of file system which is provided by the **Image**.
-- Instead of running the file directly on the localhost/system, we tell docker to run the application inside a container in an isolated environment.
-- Once we have an image we can push it to a registry like **Docker Hub**. This is just like Github for Git. Its a storage for Docker Images which can be used by anyone from anywhere.
-- With Docker Hub you can **Build and Ship any Application Anywhere**.
-11. Building and pushing a Docker Image on DockerHub
+<img src = "https://camo.githubusercontent.com/d51c01c11da6543e620059c21b10a732db3bb9b42f38958ae962e90b8c166402/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f372f37392f446f636b65725f253238636f6e7461696e65725f656e67696e652532395f6c6f676f2e706e67">
+
+## Overview
+
+Welcome to the world of Docker! This guide will introduce you to the fundamental concepts and workflows of Docker, a powerful platform for building, running, and shipping applications.
+
+## What is Docker?
+
+**Docker** is a versatile platform that simplifies the development and deployment of applications. It provides a standardized way to package an application and its dependencies into a single, portable unit called a **container**. Here's why Docker is so exciting:
+
+## Key Concepts
+
+1. **Versatility**: Docker allows you to run entirely different applications with unique dependencies on the same system without conflicts. For example, you can run App 1 using Node.js 14 and MongoDB 4 alongside App 2 with Node.js 9 and MongoDB 3.
+
+2. **Isolation**: When you use Docker to build and run an application, it creates an isolated environment. This isolation means that an app can be removed from your system without affecting other apps or their dependencies.
+
+3. **Containers**: Containers are the heart of Docker. They provide a lightweight and consistent environment for running applications.
+
+4. **Virtual Machines (VMs)**: Docker is not to be confused with traditional virtualization technologies. VMs abstract physical hardware, while Docker containers encapsulate applications and their dependencies. For example, on a Mac, you can have Windows and Linux VMs running.
+
+## Advantages of Containers over Virtual Machines
+
+Containers have several advantages over traditional VMs:
+
+- **Efficiency**: VMs require a fully installed operating system, while containers share the host OS, reducing resource consumption.
+
+- **Speed**: Containers start quickly compared to VMs.
+
+- **Resource Efficiency**: Containers consume fewer hardware resources compared to VMs.
+
+## Docker Architecture
+
+Docker is designed to work on various systems:
+
+- On a Windows PC, Docker supports both Windows and Linux containers (Windows 10 even contains a Linux kernel).
+
+- On a Linux system, Docker primarily runs Linux containers natively.
+
+- On a Mac system, Docker uses a Linux VM to seamlessly run Linux containers.
+
+## Docker Workflow
+
+Here's a high-level overview of the Docker workflow:
+
+### Step 1: Dockerize Your Application
+
+An application is dockerized using the **Dockerfile**. The dockerfile is a plain text file that contains the instructions that docker uses to package this application into an **Image**.
+
+### Step 2: Docker Images
+
+This **Image** contains all the information that is needed by our application to run properly. Typically the **Image** contains the following things:
+
+1. A cut down OS
+2. A runtime environment
+3. Application Files
+4. Third-party libraries
+5. Environment Variables
+
+### Step 3: Containers
+
+This **Image** is then used to start a **Container** by docker. A **Container** is a special type of process because it has its own type of file system which is provided by the **Image**.
+
+### Step 4: Image Registry
+
+Instead of running the file directly on the localhost/system, we tell docker to run the application inside a container in an isolated environment. Once we have an image we can push it to a registry like **Docker Hub**. This is just like Github for Git. It's a storage for Docker Images which can be used by anyone from anywhere. With Docker Hub you can **Build and Ship any Application Anywhere**.
+
+### Step 5: Building and pushing a Docker Image on DockerHub
+
 - Create a folder for your docker project. Eg. ```docker_project```
 - Open folder in VSCode
 - Create an app.js will the code : ```console.log("Hello Docker!);```
-- Create a **Dockerfile** which contains all the information for the docker to run the application successully containing the following code:
+- Create a **Dockerfile** which contains all the information for the docker to run the application successfully containing the following code:
     ```FROM node:alpine```
     ```COPY . /app```
     ```WORKDIR /app```
