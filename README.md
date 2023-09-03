@@ -55,3 +55,33 @@
 - On a windows pc -> Windows + Linux containers can run (windows 10 contain linux kernel)
 - On a Linux system -> Linux containers can run
 - On a Mac system -> Linux container can run using Linux VM
+10. Docker Workflow
+- An application is dockerized using the **Dockerfile**. The dockerfile is a plain text file that contains the instructions that docker uses to package this application into an **Image**.
+- This **Image** contains all the information that is needed by our application to run properly.
+- Typically the **Image** contains the following things: 1. A cut down OS 2. A runtime environment 3. Application Files 4. Third-party libraries 5. Environment Variables
+- This **Image** is then used to start a **Container** by docker.
+- A **Container** is a special type of process because it has its own type of file system which is provided by the **Image**.
+- Instead of running the file directly on the localhost/system, we tell docker to run the application inside a container in an isolated environment.
+- Once we have an image we can push it to a registry like **Docker Hub**. This is just like Github for Git. Its a storage for Docker Images which can be used by anyone from anywhere.
+- With Docker Hub you can **Build and Ship any Application Anywhere**.
+11. Building and pushing a Docker Image on DockerHub
+- Create a folder for your docker project. Eg. ```docker_project```
+- Open folder in VSCode
+- Create an app.js will the code : ```console.log("Hello Docker!);```
+- Create a **Dockerfile** which contains all the information for the docker to run the application successully containing the following code:
+    ```FROM node:alpine```
+    ```COPY . /app```
+    ```WORKDIR /app```
+    ```CMD node app.js```
+- Create a docker image using the command : ```docker build -t docker_project .```
+- Check the created docker images created on the system using the command: ```docker images``` or ```docker image ls```
+- Login into dockerhub on the browser and create a repository that will contain the docker image which you have just created. For eg. name the repository as docker_project
+- Login to the dockerhub in the CMD using command : ```docker login -u <YOUR USER NAME>``` and enter the docker password.
+- Enter the command : ```docker tag getting-started YOUR-USER-NAME/docker_project```
+- Push the docker image to the repository using command : ```docker push YOUR-USER-NAME/docker_project```
+- To check the working of the docker image which is pushed to dockerhub, login to the website : <a href = "https://labs.play-with-docker.com/">play-with-docker</a>
+- Create a new instance of the VM on play-with-docker.
+- Pull the image from your repository on dockerhub : ```docker pull YOUR-USER-NAME/docker_project```
+- Check whether the image is pulled successfully or not using, ```docker image ls```
+- Run the image on the VM using, ```docker run YOUR-USER-NAME/docker_project```
+- The output will be displayed on the terminal: **Hello Docker!**
