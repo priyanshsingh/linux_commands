@@ -29,3 +29,29 @@
 28. Removing a file, we can use the ```rm``` command. For eg ```rm file.txt```
 29. 
  
+# Docker Concepts
+
+1. **Docker**: It is a platform that is used to build, run and ship applications.
+2. Eg. 2 completely different apps with completely different dependencies can run on same system using it. Eg. App 1 (uses Node 14 and Mongo 4) and App 2 (uses Node 9 and Mongo 3)
+3. If the use of an app (built using docker) is done, it can be compeletely removed from the system without affecting other apps and their dependencies.
+4. Container - An isolated env for running an application.
+5. Virtual Machine - An abstraction of a machine (physical hardware). Eg On a Mac - 2 virtual machine can be present -> a. Windows b. Linux
+6. VMs can be created using a HyperVisor software like VirtualBox or VMware or Hyper-v(windows only)
+7. Disadvantages with Virtual Machines are:
+    <ul>
+      <li>Each Virtual Machine needs a fully installed OS</li>
+      <li>Slow to start</li>
+      <li>resource intensive</li>
+     </ul>
+8. Advantages with Containers are:
+    <ul>
+      <li>Allow running multiple apps in isolation</li>
+      <li>Are lightweight</li>
+      <li>Use OS of the Host</li>
+      <li>Start Quicklyt</li>
+      <li>Needs less hardware resources</li>
+     </ul>
+9. Docker Architecture:
+- On a windows pc -> Windows + Linux containers can run (windows 10 contain linux kernel)
+- On a Linux system -> Linux containers can run
+- On a Mac system -> Linux container can run using Linux VM
